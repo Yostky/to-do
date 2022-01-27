@@ -1,0 +1,143 @@
+.App {
+  text-align: center;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.max-width {
+  max-width: 700px;
+}
+
+.itemButton {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px grey;
+}
+
+.taskListWrap {
+  margin: auto;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+
+.descriptionBox {
+  font-size: 1rem;
+  margin: 1rem;
+  display: flex;
+  overflow-y: scroll;
+  overflow-wrap: anywhere;
+  text-align: left;
+  height: 100px;
+  line-height: 25px;
+  background-color: rgba(209, 244, 255, 0.5);
+  border-radius: 5px;
+  padding: .5rem;
+}
+
+.todoItems {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(240, 251, 255);
+  border: 2px solid rgb(196, 239, 252);
+} ::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+.delete {
+  background-color: rgb(255, 19, 19);
+} 
+.delete:hover {
+  background-color: rgb(214, 0, 0);
+}
+
+.complete {
+  background-color: rgb(0, 233, 0);
+}
+
+.complete:hover {
+  background-color: rgb(0, 207, 0);
+}
+
+.justify {
+  justify-content: center;
+}
+
+.borderLine {
+  border: 2px solid rgb(196, 239, 252);
+}
+
+.margin1 {
+  margin: 8px;
+}
+
+.margin2 {
+  margin: 2rem auto;
+}
+
+.margin3 {
+  margin: auto;
+}
+
+.lg-font-size {
+  font-size: 2.5rem;
+}
+
+.md-font-size {
+  font-size: 1.5rem;
+}
+
+.sm-font-size {
+  font-size: 1rem;
+}
+
+.align-left {
+  align-content:flex-start;
+}
+
+.line {
+  border-bottom: 2px solid rgb(196, 196, 196);
+}
+
+/* .background {
+  background-color: rgb(250, 250, 250);
+} */
+
+.background {
+  background-color: rgb(240, 251, 255);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
