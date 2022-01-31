@@ -11,27 +11,34 @@ const AppContextProvider = (props) => {
     const [taskList, setTaskList] = useState([]);
 
     useEffect(() => {
-        console.log('worked')
         axios.get('http://localhost:4000/tasks')
         .then((response) => response.data)
-        .then(response => setTaskList([response]));
+        .then(response => setTaskList([...response]));
     },[]);
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:4000/addTask',{
-            
-            task: {
-                title: title,
-                date: date,
-                notes: notes
-            }
-        }).then(function (response) {
-            getTaskList();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+
+        const newTask = {
+            title,
+            date,
+            notes
+        }
+
+        await axios.post('http://localhost:4000/addTask',{
+            task: newTask
+        })
+
+        .then((response) => {
+            const id = response.data.id;
+            newTask.taskid = id
+            setTaskList([...taskList, newTask])
+        })
+
+        .catch((error) => {
+            console.log("error: ", error);
+        });
         setTitle('');
         setDate('');
         setNotes('');
@@ -40,20 +47,18 @@ const AppContextProvider = (props) => {
     const getTaskList = () => {
         axios.get('http://localhost:4000/tasks')
         .then((response) => response.data)
-        .then(response => setTaskList([response]));
+        .then(response => setTaskList([...response]));
     }
     
-    const onClickDelete = (id) => {
-        console.log('deleted')
+    const onClickDelete = (id, index) => {
         axios.delete(`http://localhost:4000/deleteTask/${id}`)
         setTitle('');
         setDate('');
         setNotes('');
+        const taskListBuffer = taskList;
+        taskListBuffer.splice(index, 1);
+        setTaskList([...taskListBuffer]);
     }
-
-    useEffect(() => {
-        getTaskList();
-    },[taskList])
 
     return (
         <AppContext.Provider value={{
